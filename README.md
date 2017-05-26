@@ -1,3 +1,3 @@
 # koaCrud
- >npm install for all npm Packages.
- >bower install for all bower Packages.
+ >Add npm install for all npm Packages.
+ > Add bower install for all bower Packages.
