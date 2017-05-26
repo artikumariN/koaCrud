@@ -1,0 +1,83 @@
+<div class="container"  ng-controller="employeeRecords" ng-init="successUpdate=false">
+  <h2>Employee Records</h2>
+  <div ng-if="successUpdate">
+    <div class="alert alert-warning">
+      <strong>Record updated successful</strong>
+    </div>
+  </div>
+  <table class="table responsive">
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>sr.no.</th>
+        <th>Name </th>
+        <th>Designation</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="employee in employeeData">
+        <td><a data-toggle="modal" ng-click="findEmployee(employee._id)" data-target="#editRecord"><span class="glyphicon glyphicon-pencil"></span></a>
+          <a ng-click="deleteRecord(employee._id)"><span class="glyphicon glyphicon-trash"></span></a>
+          </td>
+
+        <td>{{$index+1}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.designation}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.mobile}}</td>
+        <td>{{employee.address}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="editRecord" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Record</h4>
+        </div>
+
+        <div class="modal-body">
+          <form action="/action_page.php">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" ng-model="name" placeholder="Enter Name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" value="emp.email" ng-model="email" placeholder="Enter email address" name="email" >
+            </div>
+
+            <div class="form-group">
+              <label for="mob">Mobile Number:</label>
+              <input type="number" class="form-control" ng-model="number" placeholder="Enter Mobile Number" name="num" >
+            </div>
+
+            <div class="form-group">
+              <label for="designation">Designation</label>
+              <input type="text" class="form-control" ng-model="designation" placeholder="Enter designation" name="designation">
+            </div>
+
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea class="form-control" id="email" placeholder="Enter Address" ng-model="address" name="address"></textarea>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success"  ng-click="update(emp._id)">Update</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
